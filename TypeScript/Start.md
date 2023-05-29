@@ -1,4 +1,10 @@
-# Create a Typescript project
+# Set up a Typescript project
+1. Install `typescript` package.
+2. Add `ts.config` by `tsc --init`.
+
+It will be better to have a Typescript starter project in github. Every time when we need to implement a typescript project, just clone that starter and continue to add more features.
+
+## Details
 1. **Install `node.js`**: To create a `TypeScript` project, set up `Node.js` as it includes `TypeScript` as a dependency. The `npm` package manager is automatically installed with `Node.js`. If you prefer to use the `yarn` package manager, you'll need to install it separately.
 2. **Install `TypeScript` compiler globally**: 
     use `npm`
