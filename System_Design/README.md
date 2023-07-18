@@ -1,3 +1,17 @@
+- [Concepts](#concepts)
+- [Scalability](#scalability)
+- [Bugs](#bugs)
+  - [Sentry and Logger with AWS cloudwatch](#sentry-and-logger-with-aws-cloudwatch)
+- [How website works](#how-website-works)
+- [SQL vs noSQL](#sql-vs-nosql)
+- [Reactjs](#reactjs)
+  - [Virtual DOM](#virtual-dom)
+- [SPA vs Static Application](#spa-vs-static-application)
+- [HTTP method](#http-method)
+  - [POST vs PUT](#post-vs-put)
+- [CAP theorem](#cap-theorem)
+
+
 # Concepts
 1. Vertical Scaling
 2. Horizontal Scaling:
