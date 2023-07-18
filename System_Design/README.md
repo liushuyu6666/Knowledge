@@ -4,12 +4,14 @@
   - [Sentry and Logger with AWS cloudwatch](#sentry-and-logger-with-aws-cloudwatch)
 - [How website works](#how-website-works)
 - [SQL vs noSQL](#sql-vs-nosql)
+  - [SQL](#sql)
 - [Reactjs](#reactjs)
   - [Virtual DOM](#virtual-dom)
 - [SPA vs Static Application](#spa-vs-static-application)
 - [HTTP method](#http-method)
   - [POST vs PUT](#post-vs-put)
 - [CAP theorem](#cap-theorem)
+- [throughput](#throughput)
 
 
 # Concepts
@@ -128,7 +130,20 @@ Utilize CloudWatch features like log search, filtering, and metric extraction fo
 3. Language: SQL vs more flexible querying (key-based lookups, document-based, graph traversal)
 4. Scalability: SQL provide vertical and horizontal scalability, NoSQL are designed for horizontal scalability, they can easily scale by adding more servers.
 
-SQL databases are typically a good fit for applications that require strong data consistency, complex queries, and transactions. NoSQL databases are often preferred for handling large-scale, rapidly changing, or unstructured data, and for applications that prioritize scalability and performance over strict data consistency.
+## SQL
+SQL is good at 
+1. complex queries (such as calculating averages, grouping by departments and filtering based on date ranges), aggregation and join tables. 
+2. Consistency
+    example: Imagine a banking system where you have two related tables: `Accounts` and `Transactions`. Each account has a balance stored in the `Accounts` table, and transactions related to those accounts are stored in the `Transactions` table. To maintain consistency, the database should enforce the following constraints:
+      - Balance Constraint: The sum of all transaction amounts associated with an account should equal the account's current balance.
+      - Referential Integrity: The foreign key relationship between the Transactions table and the Accounts table should be maintained. Every transaction should be associated with a valid account.
+    Now, let's consider a scenario where a transaction is being processed:
+      1. A user initiates a withdrawal transaction from Account A with a certain amount.
+      2. The database begins the transaction, ensuring that no other concurrent transactions interfere with this one by locking the row in `Account` table. (row-level lock)
+      3. The system checks if Account A has sufficient balance for the withdrawal. If the balance is sufficient, the transaction proceeds; otherwise, it is rolled back.
+      4. The transaction deducts the withdrawal amount from Account A's balance in the Accounts table and inserts a new record in the Transactions table.
+      5. After completing the transaction, the database commits the changes, making them permanent.
+
 
 # Reactjs
 
@@ -162,4 +177,7 @@ Initially, the nodes (A, B, and C) are part of the distributed system, ensuring 
 
 Consequences arise: If you want the nodes in both partitions to remain available and serve requests, data consistency cannot be guaranteed as the partitions cannot exchange data. Alternatively, if you prioritize data consistency, one partition may need to be isolated and unavailable for changes.
 
-Another way to articulate the CAP theorem is by stating that you can only choose two out of the three components simultaneously. To maintain both consistency and availability, the goal is to avoid network partitions. However, network partitions are often considered a prerequisite。
+Another way to articulate the CAP theorem is by stating that you can only choose two out of the three components simultaneously. To maintain both consistency and availability, the goal is to avoid network partitions. However, network partitions are often considered a prerequisite.
+
+
+# throughput
