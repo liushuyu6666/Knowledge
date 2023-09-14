@@ -50,3 +50,83 @@ Use the unary operator + to convert a string to the most fitting numeric type, â
 var x = "32";
 var y: number = +x;
 ```
+
+# Scope
+1. Global Scope: defined outside of any class and can be used anywhere in the program.
+2. Function/Class Scope: variables defined in a function or class can be used anywhere within that scope.
+3. Local Scope/Code Block: variables defined in the local scope can be used anywhere in that block.
+
+# Rest Parameters
+Rest parameters allow you to pass a varied number of arguments (zero or more) to a function. This is useful when youâ€™re unsure how many parameters a function will receive. All arguments after the rest symbol `...` will be stored in an array. For example:
+```typescript
+function Greet(greeting: string, ...names: string[]) {
+    return greeting + " " + names.join(", ") + "!";
+}
+
+Greet("Hello", "Steve", "Bill"); // returns "Hello Steve, Bill!"
+
+Greet("Hello");// returns "Hello !"
+```
+The rest parameter must be the last on parameter definition and you can only have 1 rest parameter per function.
+
+
+# Omit & Pick Type
+In TypeScript, `Omit` allows you to construct a type by picking all properties from a given type and then removing certain keys.
+
+The general definition of `Omit` is
+
+```typescript
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+```
+
+```typescript
+interface FullUserInfo {
+    id: number;
+    name: string;
+    password: string;
+}
+
+type SafeUserInfo = Omit<FullUserInfo, 'password'>;
+
+// Equivalent to:
+// type SafeUserInfo = {
+//     id: number;
+//     name: string;
+// }
+
+```
+
+# interface and type
+1. Extending and Implementing
+
+2. Declaration Merging
+3. Computations and Conditionals:
+   * Type: Can express complex relationships and conditional types.
+    ```typescript
+    type Keys = 'option1' | 'option2';
+    type MyMappedType = { [K in Keys]: any };
+    type ConditionalType = number extends any ? string : boolean;
+    ```
+   * Interface: Cannot.
+4. Literal Types:
+   * Type: Can be used to define literal types.
+    ```typescript
+    type ButtonType = "submit" | "reset";
+    ```
+   * Interface: Cannot be used to define literal types.
+
+# Overloading
+```typescript
+function add(a:string, b:string):string;
+
+function add(a:number, b:number): number;
+
+function add(a: any, b:any): any {
+    return a + b;
+}
+
+add("Hello ", "Steve"); // returns "Hello Steve" 
+add(10, 20); // returns 30 
+```
+1. The first two function declarations define the overloaded versions of the add function
+2. The third function is the actual implementation. The actual function implementation has to be more generic (using the `any` type in this case) to handle all possible overloads. **Note**: While TypeScript has function overloading, JavaScript (which TypeScript compiles to) does not.
