@@ -22,7 +22,7 @@ Using getters and setters provides a number of benefits:
     There is a Rectangle class that has two properties `width` and `height`:
     ```typescript
     class Rectangle {
-    constructor(public width: number, public height: number) {}
+        constructor(public width: number, public height: number) {}
     }
     ```
     To access the `width`:
@@ -64,15 +64,15 @@ Using getters and setters provides a number of benefits:
 
     ```typescript
     class Person {
-    name: string;
+        name: string;
 
-    constructor(name: string) {
-        this.name = name;
-    }
+        constructor(name: string) {
+            this.name = name;
+        }
 
-    speak() {
-        console.log(`Hi, my name is ${this.name}`);
-    }
+        speak() {
+            console.log(`Hi, my name is ${this.name}`);
+        }
     }
     ```
 
@@ -80,19 +80,19 @@ Using getters and setters provides a number of benefits:
 
     ```typescript
     class Person {
-    private _name: string;
+        private _name: string;
 
-    constructor(name: string) {
-        this._name = name;
-    }
+        constructor(name: string) {
+            this._name = name;
+        }
 
-    get name() {
-        return this._name;
-    }
+        get name() {
+            return this._name;
+        }
 
-    speak() {
-        console.log(`Hi, my name is ${this._name}`);
-    }
+        speak() {
+            console.log(`Hi, my name is ${this._name}`);
+        }
     }
     ```
 
