@@ -1,5 +1,5 @@
 # Overview
-Ansible is a powerful automation tool designed to facilitate the management of remote systems while ensuring they adhere to predefined configurations. This explanation is based on the official Ansible documentation available at (the official website)[https://docs.ansible.com/ansible/latest/getting_started/index.html].
+Ansible is a powerful automation tool designed to facilitate the management of remote systems while ensuring they adhere to predefined configurations. This explanation is based on the official Ansible documentation available at [the official website](https://docs.ansible.com/ansible/latest/getting_started/index.html).
 
 A fundamental Ansible environment comprises three core components:
 
