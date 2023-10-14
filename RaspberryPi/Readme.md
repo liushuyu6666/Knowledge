@@ -2,7 +2,7 @@
 follow this [link](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview), which will tell you:
 
 ## prepare your SD card
-1.  instal rpi-imager on Linux and then you can select one system from the list.
+1.  install rpi-imager on Linux and then you can select one system from the list.
 2.  burn Ubuntu server to your SD card.
 3.  network configuration.
 
