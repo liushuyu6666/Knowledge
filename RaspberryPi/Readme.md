@@ -13,7 +13,20 @@ follow this [link](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-ra
 4. to get your raspberry pi's ip address, it is better to check your modem admin page, but you can use `nmap -sP 192.168.2.0/24` or `arp -an | grep e4:5f:1` to find the raspberry pi, the `e4:5f:1` is the MAC address
 5. after finding the ip address, you can ping the ip address
 6. but before that, make sure that you enable the raspberry pi's ssh. use `ssh ubuntu@<your_raspberry_pi_ip_address>` to ssh it
-7. 
+
+## Scan the Raspberry Pi on the local network
+When attempting to connect to your Raspberry Pi within the same local network, you may encounter situations where your Raspberry Pi remains hidden when using the command `arp -an | grep e4:5f:1` (where `e4:5f:1` is the prefix of Raspberry Pi Trading Ltd's MAC address). This can happen if your computer hasn't recently sent or received data packets from the Raspberry Pi, causing them not to appear in the ARP cache. To address this, you can proactively scan for the Raspberry Pi's presence.
+
+Follow these steps:
+1. Confirm the local network's IP address by accessing your router's administrative interface. This IP address is typically `192.168.1.1` or `192.168.2.1`.
+2. Scan the network using the `nmap` tool with the following command:
+```bash
+nmap -sn 192.168.2.0/24
+```
+3. Retrieve the MAC and IP addresses of the Raspberry Pi by using the following command:
+```bash
+arp -an | grep e4:5f:1
+```
 
 ## get MAC address
 1. goto `/sys/class/net`
