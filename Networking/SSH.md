@@ -73,6 +73,10 @@ To establish an SSH connection between the client and the server, follow these p
         server_ssh ALL=(ALL:ALL) ALL
         ```
       3. Save the `sudoers` file.
+      4. Add the user to the `sudo` group:
+        ```bash
+        sudo usermod -aG sudo server_ssh
+        ```
    3. Test `sudo` privileges:
       1. Switch to the "server_ssh" user:
         ```bash
