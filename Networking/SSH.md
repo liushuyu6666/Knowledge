@@ -88,7 +88,7 @@ To establish an SSH connection between the client and the server, follow these p
         ```
       3. No password prompt should appear.
 2. Configure `~/.ssh/authorized_keys` on the server from the client side:
-   1. Typically, `~/.ssh/authorized_keys` on the server is empty.
+   1. Typically, `~/.ssh/authorized_keys` on the server is empty. Please note that each user on a Unix-based system has their own home directory, and their `~/.ssh/authorized_keys` file is located in their respective home directory. For example, user "server_ssh" has a home directory at `/home/server_ssh`, and its `authorized_keys` file is located at `/home/server_ssh/.ssh/authorized_keys`.
    2. Copy the public key from the client to the server using:
     ```bash
     ssh-copy-id -i </path/to/your/public_key.pub> server_ssh@<server_ip>
