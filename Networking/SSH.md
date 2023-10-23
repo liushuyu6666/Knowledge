@@ -85,13 +85,13 @@ To establish an SSH connection between the client and the server, follow these p
       3. No password prompt should appear.
 2. Configure `~/.ssh/authorized_keys` on the server from the client side:
    1. Typically, `~/.ssh/authorized_keys` on the server is empty.
-   2. Connect to the server through SSH using a password from the client side:
-    ```bash
-    ssh server_ssh@<server_ip>
-    ```
-   3. Copy the public key from the client to the server using:
+   2. Copy the public key from the client to the server using:
     ```bash
     ssh-copy-id -i </path/to/your/public_key.pub> server_ssh@<server_ip>
+    ```
+   3. Connect to the server through SSH using a password from the client side:
+    ```bash
+    ssh server_ssh@<server_ip>
     ```
    4. Ensure correct permissions on `.ssh` and `authorized_keys` on the server:
     ```bash
