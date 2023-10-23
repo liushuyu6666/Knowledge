@@ -15,6 +15,13 @@ Symmetric cryptography employs a single shared secret key that serves both encry
    2. Add the client's public key to the authorized keys list on the target server.
       * Use the `ssh-copy-id` command to copy the public key, or
       * Manually add the public key.
+   3. When connect to an SSH server for the first time using a command like "ssh <server_name>@<ip_address>", the client will display a message similar to the following:
+    ```txt
+    The authenticity of host 'hostname (IP address)' can't be established.
+    ECDSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+    Are you sure you want to continue connecting (yes/no)?
+    ```
+    By typing "yes", the server's key is added to the `known_hosts`.
 2. Client Authentication (Asymmetric Cryptography)
    1. When the client connects to the remote server, it offers its public key.
    2. The server checks whether the client's public key is in its list of authorized keys.
@@ -26,7 +33,10 @@ Symmetric cryptography employs a single shared secret key that serves both encry
 4. Secure Channel Establishment (Symmetric Cryptography)
    1. Once the server and client have authenticated each other, two session keys are generated independently by both the client and server, based on a combination of the client's and server's public keys, along with random data.
    2. Then the client and the server will exchange their session keys.
-   3. These session keys are used to encrypt and decrypt data for secure communication.
+   3. These session keys are used to encrypt and decrypt data for secure communication, including commands such as "sudo apt upgrade".
 
 # Practice
-1. To
+In the context of a scenario where the client establishes an SSH connection with the server, you can find the detailed operational steps outlined [here].(https://github.com/liushuyu6666/Learn_Ansible/blob/master/readme.md#raspberry-pi-setup-guide). During this process, consider the Raspberry Pi as the equivalent of the server and the MacBook as the client.
+
+All the actions described above correspond to Step 1 in the procedure section. Steps 2 and 3 will be executed automatically behind the screen.
+
