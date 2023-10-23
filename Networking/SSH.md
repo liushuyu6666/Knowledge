@@ -1,3 +1,8 @@
+- [Overview](#overview)
+- [Symmetric Cryptography and Asymmetric Cryptography](#symmetric-cryptography-and-asymmetric-cryptography)
+- [Procedures](#procedures)
+- [Practice](#practice)
+
 # Overview
 In practice, SSH communication involves two primary methods: key-based authentication and password-based authentication.
 
@@ -36,7 +41,7 @@ Symmetric cryptography employs a single shared secret key that serves both encry
    3. These session keys are used to encrypt and decrypt data for secure communication, including commands such as "sudo apt upgrade".
 
 # Practice
-In the context of a scenario where the client establishes an SSH connection with the server, you can find the detailed operational steps outlined [here].(https://github.com/liushuyu6666/Learn_Ansible/blob/master/readme.md#raspberry-pi-setup-guide). During this process, consider the Raspberry Pi as the equivalent of the server and the MacBook as the client.
+In the context of a scenario where the client establishes an SSH connection with the server, you can find the detailed operational steps outlined [here](https://github.com/liushuyu6666/Learn_Ansible/blob/master/readme.md#raspberry-pi-setup-guide). During this process, consider the Raspberry Pi as the equivalent of the server and the MacBook as the client.
 
 All the actions described above correspond to Step 1 in the procedure section. Steps 2 and 3 will be executed automatically behind the screen.
 
