@@ -5,6 +5,8 @@
   - [Client Preparation](#client-preparation)
   - [Server Preparation](#server-preparation)
   - [Double Check the Client and the Server:](#double-check-the-client-and-the-server)
+- [Troubleshooting](#troubleshooting)
+  - [`sudo` Password Prompt](#sudo-password-prompt)
 
 # Overview
 In practice, SSH communication involves two primary methods: key-based authentication and password-based authentication.
@@ -72,10 +74,9 @@ To establish an SSH connection between the client and the server, follow these p
         ```bash
         server_ssh ALL=(ALL:ALL) ALL
         ```
-      3. Save the `sudoers` file.
-      4. Add the user to the `sudo` group:
+      3. Save the `sudoers` file. Check the validation:
         ```bash
-        sudo usermod -aG sudo server_ssh
+        sudo visudo -c
         ```
    3. Test `sudo` privileges:
       1. Switch to the "server_ssh" user:
@@ -111,3 +112,12 @@ To confirm that the configuration is complete:
 
 1. Ensure that the IP address of the server is added to `~/.ssh/known_hosts` on the client. This should be done automatically the first time the client tries to connect to the server.
 2. Confirm that the public key is added to `~/.ssh/authorized_keys` on the server.
+
+
+# Troubleshooting
+## `sudo` Password Prompt
+If a password prompt for `sudo` persists, consider removing the user account from the `sudo` group using the following command:
+```bash
+sudo deluser server_ssh sudo
+```
+This command will disassociate the user account from the `sudo` group, resolving any `sudo` password prompts.
