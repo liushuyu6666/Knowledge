@@ -153,4 +153,4 @@ class ReportGenerator {
 ```
 In this compliant example, the `DataProvider` interface is simulated by using a class with a method that throws an error. Both `Database` and any potential future data sources can extend this class. The `ReportGenerator` class now depends on the abstraction (`DataProvider`) rather than the concrete `Database` class directly, adhering to the Dependency Inversion Principle.
 
-There is [a comparison between DIP and DI](../Design_Pattern/readme.md).
+There is [a comparison between DIP and DI](../Design_Pattern/readme.md#dependency-injection-di-vs-dependency-inversion-principle-dip).
