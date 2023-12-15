@@ -4,13 +4,13 @@
     - [Disadvantages](#disadvantages)
     - [Advantages](#advantages-1)
     - [Disadvantages](#disadvantages-1)
-- [Reverse Proxy](#reverse-proxy)
-- [Content Delivery Server (CDS)](#content-delivery-server-cds)
-  - [CDN](#cdn)
-  - [Server caching](#server-caching)
+- [Network infrastructure components](#network-infrastructure-components)
+  - [Reverse Proxy](#reverse-proxy)
+    - [Features](#features)
   - [Load Balancer](#load-balancer)
-  - [Security and DDoS protection](#security-and-ddos-protection)
-  - [Scalability:](#scalability)
+    - [Features](#features-1)
+  - [API Gateway](#api-gateway)
+  - [Content Delivery Server (CDS)](#content-delivery-server-cds)
 - [Application layer protocol:](#application-layer-protocol)
   - [HTTP](#http)
   - [HTTPS](#https)
@@ -25,7 +25,7 @@
   - [Sharding](#sharding)
   - [Replication](#replication)
   - [Leader and Follower Replication](#leader-and-follower-replication)
-- [Scalability](#scalability-1)
+- [Scalability](#scalability)
 - [Bugs](#bugs)
   - [Sentry and Logger with AWS cloudwatch](#sentry-and-logger-with-aws-cloudwatch)
 - [How website works](#how-website-works)
@@ -66,20 +66,45 @@ Horizontal scaling involves adding more machines or nodes to a system.
 1. complexity
 2. potential communication cost
 
-# Reverse Proxy
-A reverse proxy is a server that sits between client devices and a web server, forwarding client requests to the web server and returning the server's responses to clients. It performs functions such as load balancing, SSL termination, and caching.
+# Network infrastructure components
+## Reverse Proxy
+A reverse proxy is a server that sits between client devices and a web server, forwarding client requests to the web server and returning the server's responses to clients. 
+### Features
+1. load balancing:  
+2. SSL termination: Handles Secure Sockets Layer (SSL) encryption and decryption
+3. caching: Stores and serves static content (like images, stylesheets, and scripts)
+4. health monitor
+5. Web Application Firewall (WAF)
+6. content rewrite
+
+## Load Balancer
+distribute incoming network traffic across multiple servers to ensure no single server bears too much load.
+
+### Features
+1. load balancing
+2. SSL Termination
+3. Global Server Load Balancing (GSLB)
+4. Content-Based Routing
+5. health monitor
+5. Web Application Firewall (WAF)
+6. Scalability: Content delivery systems are designed to scale horizontally, meaning that additional servers can be easily added to the network to handle increased traffic or demand.
 
 The Algorithm the Load balancer use: Round Robin or Hashing.
 
-# Content Delivery Server (CDS)
-## CDN
-Geographically distributed
-## Server caching
-Content delivery servers often implement caching mechanisms to store copies of frequently requested content closer to the end-users.
-## Load Balancer
-## Security and DDoS protection
-## Scalability: 
-Content delivery systems are designed to scale horizontally, meaning that additional servers can be easily added to the network to handle increased traffic or demand.
+## API Gateway
+1. load balancing
+2. Authentication & Authorization
+3. Request and Response Transformation: Modifies or transforms API requests and responses to bridge differences in data formats, versions, or structures between clients and backend services.
+4. caching
+5. logging & monitoring
+6. Web Application Firewall (WAF):
+
+## Content Delivery Server (CDS)
+1. Load Balancing
+2. CDN: Geographically distributed
+3. caching: Content delivery servers often implement caching mechanisms to store copies of frequently requested content closer to the end-users.
+4. Security and DDoS protection
+5. Scalability: Content delivery systems are designed to scale horizontally, meaning that additional servers can be easily added to the network to handle increased traffic or demand.
 
 # Application layer protocol:
 ## HTTP
