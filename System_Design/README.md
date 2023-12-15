@@ -1,5 +1,31 @@
 - [Concepts](#concepts)
-- [Scalability](#scalability)
+  - [Vertical Scaling vs Horizontal Scaling](#vertical-scaling-vs-horizontal-scaling)
+    - [Advantages:](#advantages)
+    - [Disadvantages](#disadvantages)
+    - [Advantages](#advantages-1)
+    - [Disadvantages](#disadvantages-1)
+- [Reverse Proxy](#reverse-proxy)
+- [Content Delivery Server (CDS)](#content-delivery-server-cds)
+  - [CDN](#cdn)
+  - [Server caching](#server-caching)
+  - [Load Balancer](#load-balancer)
+  - [Security and DDoS protection](#security-and-ddos-protection)
+  - [Scalability:](#scalability)
+- [Application layer protocol:](#application-layer-protocol)
+  - [HTTP](#http)
+  - [HTTPS](#https)
+  - [websocket](#websocket)
+- [API pattern:](#api-pattern)
+- [ACID of relational database](#acid-of-relational-database)
+  - [Atomicity](#atomicity)
+  - [Consistency](#consistency)
+  - [Isolation](#isolation)
+  - [Durability](#durability)
+- [Sharding and Replication](#sharding-and-replication)
+  - [Sharding](#sharding)
+  - [Replication](#replication)
+  - [Leader and Follower Replication](#leader-and-follower-replication)
+- [Scalability](#scalability-1)
 - [Bugs](#bugs)
   - [Sentry and Logger with AWS cloudwatch](#sentry-and-logger-with-aws-cloudwatch)
 - [How website works](#how-website-works)
@@ -7,38 +33,94 @@
   - [SQL](#sql)
 - [Reactjs](#reactjs)
   - [Virtual DOM](#virtual-dom)
-- [SPA vs Static Application](#spa-vs-static-application)
+- [SPA vs MPA](#spa-vs-mpa)
+  - [SPA](#spa)
+  - [MPA](#mpa)
+- [Static application vs dynamic application](#static-application-vs-dynamic-application)
 - [HTTP method](#http-method)
   - [POST vs PUT](#post-vs-put)
 - [CAP theorem](#cap-theorem)
-- [throughput](#throughput)
 
 
 # Concepts
-1. Vertical Scaling
-2. Horizontal Scaling:
-   1. adding Replicas
-3. Load Balancer - Reverse Proxy
-   1. Round Robin
-   2. Hashing
-4. Content Delivery Server (CDS)
-5. Caching
-6. DNS
-7. Application layer protocol:
-   1. HTTP
-   2. HTTPS
-   3. websocket
-8. API pattern:
-   1. RESTful
-   2. Graph QL
-   3. gRPC
-9. ACID of relational database
-10. Sharding and Replication
-    1.  Leader and Follower Replication
-11. CAP theorem
-    1.  Consistency
-    2.  Available
-    3.  Partition
+## Vertical Scaling vs Horizontal Scaling
+Vertical scaling: Vertical scaling involves increasing the capacity of a single machine or server by adding more resources to it. If you have a single server with 4 CPU cores and 16 GB of RAM, you might vertically scale by upgrading to a server with 8 CPU cores and 32 GB of RAM.
+
+### Advantages:
+simple
+
+### Disadvantages
+1. Limited scalability: There is a physical limit to how much a single machine can be scaled vertically.
+2. Cost: The cost of high-end hardware can be expensive.
+3. Downtime: Vertical scaling may require downtime during upgrades.
+
+Horizontal Scaling:
+Horizontal scaling involves adding more machines or nodes to a system.
+
+### Advantages
+1. Scalability: Easier to scale horizontally by adding more machines.
+2. Cost-effective: Can often be more cost-effective than continually upgrading a single machine.
+3. Redundancy: Distributed systems can provide better fault tolerance and redundancy.
+
+### Disadvantages
+1. complexity
+2. potential communication cost
+
+# Reverse Proxy
+A reverse proxy is a server that sits between client devices and a web server, forwarding client requests to the web server and returning the server's responses to clients. It performs functions such as load balancing, SSL termination, and caching.
+
+The Algorithm the Load balancer use: Round Robin or Hashing.
+
+# Content Delivery Server (CDS)
+## CDN
+Geographically distributed
+## Server caching
+Content delivery servers often implement caching mechanisms to store copies of frequently requested content closer to the end-users.
+## Load Balancer
+## Security and DDoS protection
+## Scalability: 
+Content delivery systems are designed to scale horizontally, meaning that additional servers can be easily added to the network to handle increased traffic or demand.
+
+# Application layer protocol:
+## HTTP
+## HTTPS
+## websocket
+1. Full-Duplex Communication:
+Unlike traditional web communication, which is typically request-response based, WebSocket enables bidirectional communication. Both the client and server can send messages to each other independently over the same connection.
+
+2. Persistent Connection:
+WebSocket establishes a persistent connection between the client and the server. This connection remains open, allowing for real-time data exchange without the overhead of repeatedly opening and closing connections for each interaction.
+
+
+# API pattern:
+1. RESTful
+2. Graph QL
+3. gRPC
+
+
+# ACID of relational database
+## Atomicity
+Ensure the transaction is committed completely, if any part of the transaction fails, the entire transaction is rolled back to its original state.
+## Consistency
+The database should always obey constraints and business rules. If a transaction violates the consistency rules, it is rolled back.
+## Isolation
+Isolation ensures that multiple transactions can be executed concurrently without interfering with each other.
+## Durability
+Ensure that once the transaction is committed, it will be permanently stored.
+
+# Sharding and Replication
+## Sharding
+A large dataset is divided into smaller, more manageable parts called shards. Each shard is an independent database that can be located on a separate server or node.
+
+## Replication
+Replication involves creating and maintaining multiple copies of the same dataset on different servers.
+
+## Leader and Follower Replication
+Leader: This server is responsible for receiving write operations (inserts, updates, deletes) and then propagating those changes to one or more follower servers.
+Follower:
+1. replicate the changes made by the leader.
+2. handle read queries
+3. synchronize their data with the leader
 
 # Scalability
 1. Horizontal Scaling
@@ -52,11 +134,11 @@
    2. message queues ??
 6. Distributed Architecture
    1. microservices
-7. Auto Scaling ??
+7. Auto Scaling: like AWS Lambda
 
 # Bugs
 1. Understand the bug: Gather information and reproduce the issue.
-2. Isolate the bug: Identify the affected component or module.
+2. pinpoint the bug: Identify the affected component or module.
 3. Use debugging techniques: Employ logging, breakpoints, and debugging tools.
 4. Analyze the code: Review relevant sections, dependencies, and edge cases.
 5. Fix the bug: Develop a plan, make code changes, and write tests.
@@ -153,9 +235,19 @@ Once the virtual DOM is updated, ReactJS performs a process called reconciliatio
 After the reconciliation process, ReactJS applies only the necessary updates to the real DOM, known as "diffing." This optimized approach minimizes the number of manipulations required on the actual DOM, resulting in better performance compared to directly updating the entire DOM structure.
 
 
-# SPA vs Static Application
+# SPA vs MPA
+## SPA
+each request -> fetch data from server and re-render the current page
+
+## MPA
+each request -> loading of a new page from the server.
 
 SPAs are suitable for complex applications that require real-time updates, interactivity, and a more dynamic user experience. Static applications are a good fit for content-focused sites, blogs, or scenarios where simplicity, performance, and security are the primary concerns. MPAs follow a page-centric architecture, where each page represents a distinct HTML document with its own set of styles, scripts, and content. Each page typically corresponds to a specific functionality or view within the application.
+
+# Static application vs dynamic application
+static: the content, structure, and layout of the pages remain fixed and do not change dynamically.
+dynamic: content, features, and functionality can change in real-time or in response to user input.
+
 
 # HTTP method
 
@@ -169,15 +261,12 @@ The client sends a POST request to a specific endpoint (e.g., `/images`) with th
 The client sends a PUT request to a specific endpoint (e.g., `/images/{imageId}`) with the updated image data included in the request payload. The server processes the request and replaces the existing image resource identified by `{imageId}` with the updated image data. The server updates the image resource with the new data provided in the PUT request. The image is modified in place, preserving the same identifier.
 
 # CAP theorem
-The CAP theorem, consisting of Consistency, Availability, and Partition components, describes a scenario where a system cannot guarantee both consistency and availability during a network partition event. It necessitates a trade-off between the two.
+The CAP theorem, consisting of Consistency, Availability, and Network Partition (network outage) components, describes a scenario where a system cannot guarantee both consistency and availability during a network partition event (network outage). It necessitates a trade-off between the two.
 
-Consider a distributed system with multiple nodes running instances of a Spring Boot application. These nodes communicate with each other to perform tasks or share data. In the event of a network partition, nodes become disconnected, forming isolated groups that cannot communicate.
+For example:
 
-Initially, the nodes (A, B, and C) are part of the distributed system, ensuring strong consistency through data replication. However, due to a network issue or failure, a partition occurs, separating nodes into two groups. The partition prevents data exchange and coordination between the groups.
+Initially, the nodes (A, B, and C) are part of the distributed system, ensuring strong consistency through data replication. However, due to a network issue or failure, nodes are separating into two groups. The outage prevents data exchange and coordination between the groups.
 
 Consequences arise: If you want the nodes in both partitions to remain available and serve requests, data consistency cannot be guaranteed as the partitions cannot exchange data. Alternatively, if you prioritize data consistency, one partition may need to be isolated and unavailable for changes.
 
 Another way to articulate the CAP theorem is by stating that you can only choose two out of the three components simultaneously. To maintain both consistency and availability, the goal is to avoid network partitions. However, network partitions are often considered a prerequisite.
-
-
-# throughput
