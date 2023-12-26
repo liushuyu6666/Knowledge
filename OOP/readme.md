@@ -16,6 +16,7 @@ Go to chat gpt, find the "OOP Principles Overview" I have no time to record it h
 - [Key Principles](#key-principles)
   - [Encapsulation](#encapsulation)
   - [Inheritance](#inheritance)
+    - [Single Inheritance](#single-inheritance)
     - [Multiple Inheritance](#multiple-inheritance)
     - [Multi-level inheritance](#multi-level-inheritance)
     - [hierarchical inheritance](#hierarchical-inheritance)
@@ -200,6 +201,8 @@ public class Car {
 In this example, the `Car` class encapsulates the data (model and year) using private variables and provides public getter and setter methods to access and modify the data. This way, the internal details of the `Car` class are hidden, and access is controlled.
 
 ## Inheritance
+![all kinds of inheritance](inheritance.png)
+### Single Inheritance
 Inheritance allows a class (subclass or derived class) to inherit properties and behaviors from another class (superclass or base class).
 ```java
 public class SportsCar extends Car {
