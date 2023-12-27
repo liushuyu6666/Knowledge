@@ -23,6 +23,7 @@
   - [python module](#python-module)
   - [python package](#python-package)
   - [python virtual environment](#python-virtual-environment)
+  - [build-in modules](#build-in-modules)
 - [PEP (Python Enhancement Proposal)](#pep-python-enhancement-proposal)
   - [doc string](#doc-string)
 - [JVM](#jvm)
@@ -62,6 +63,10 @@
 - [argparse](#argparse)
   - [`*args`](#args)
   - [`**kwargs`](#kwargs)
+- [OOP](#oop)
+  - [inheritance](#inheritance)
+    - [How do you access parent members in the child class?](#how-do-you-access-parent-members-in-the-child-class)
+    - [How will you check if a class is a child of another class?](#how-will-you-check-if-a-class-is-a-child-of-another-class)
 
 
 # Variables Scope and Namespace
@@ -219,6 +224,16 @@ In Python, a package is a way of organizing related Python modules into a direct
 
 ## python virtual environment
 A Python virtual environment provides an isolated and self-contained environment for a Python project, including its own Python interpreter and packages.
+
+## build-in modules
+- os
+- math
+- sys
+- random
+- re
+- datetime
+- JSON
+
 
 # PEP (Python Enhancement Proposal)
 A PEP is **an official design document** providing information to the Python community, or describing a new feature for Python or its processes. PEP 8 is especially important since it documents **the style guidelines** for Python Code. Apparently contributing to the Python open-source community requires you to follow these style guidelines sincerely and strictly.
@@ -569,4 +584,81 @@ tellArguments(arg1 = "argument 1", arg2 = "argument 2", arg3 = "argument 3")
 # arg1: argument 1
 # arg2: argument 2
 # arg3: argument 3
+```
+
+# OOP
+## inheritance
+### How do you access parent members in the child class?
+
+1. By using Parent class name: You can use the name of the parent class to access the attributes as shown in the example below:
+
+```python
+class Parent(object):  
+   # Constructor
+   def __init__(self, name):
+       self.name = name    
+ 
+class Child(Parent): 
+   # Constructor
+   def __init__(self, name, age):
+       Parent.name = name
+       self.age = age
+ 
+   def display(self):
+       print(Parent.name, self.age)
+ 
+# Driver Code
+obj = Child("Interviewbit", 6)
+obj.display()
+```
+
+2. By using super(): The parent class members can be accessed in child class using the super keyword.
+
+```python
+class Parent(object):
+   # Constructor
+   def __init__(self, name):
+       self.name = name    
+ 
+class Child(Parent):
+   # Constructor
+   def __init__(self, name, age):         
+       ''' 
+       In Python 3.x, we can also use super().__init__(name)
+       ''' 
+       super(Child, self).__init__(name)
+       self.age = age
+ 
+   def display(self):
+      # Note that Parent.name cant be used 
+      # here since super() is used in the constructor
+      print(self.name, self.age)
+  
+# Driver Code
+obj = Child("Interviewbit", 6)
+obj.display()
+```
+
+### How will you check if a class is a child of another class?
+This is done by using a method called `issubclass()` provided by python. The method tells us if any class is a child of another class by returning true or false accordingly.
+
+```python
+class Parent(object):
+   pass   
+ 
+class Child(Parent):
+   pass   
+ 
+# Driver Code
+print(issubclass(Child, Parent))    #True
+print(issubclass(Parent, Child))    #False
+```
+
+We can check if an object is an instance of a class by making use of `isinstance()` method:
+
+```python
+obj1 = Child()
+obj2 = Parent()
+print(isinstance(obj2, Child))    #False 
+print(isinstance(obj2, Parent))   #True 
 ```
