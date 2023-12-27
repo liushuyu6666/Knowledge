@@ -7,6 +7,8 @@
 # Overview
 CI/CD automates the process of building, testing, and deploying software. Continuous Integration ensures code changes work well together, and Continuous Delivery automates their release to staging. Continuous Deployment takes it a step further by automating deployment to production, making the release process faster, consistent, and reliable.
 
+![CI/CD](cicd.png)
+
 1. Continuous Integration (CI)
   - Developers regularly merge their code changes into main or development branch.
   - Automated builds are triggered to compile the code and perform basic tests whenever changes are integrated.
