@@ -220,7 +220,7 @@ An Interpreted language executes its statements line by line. Languages such as 
 In a general sense, a Python module is often associated with a .py file. A Python module is a file containing Python code, and modules are typically organized into separate files to facilitate code organization, reuse, and maintainability.
 
 ## python package
-In Python, a package is a way of organizing related Python modules into a directory hierarchy. A package can contain multiple Python files (modules) and subpackages, forming a hierarchical structure. This is a common practice for organizing code in larger Python projects.
+In Python, a subdirectory that includes a `__init__.py` file is considered a package, and can be imported. When you import a package, the `__init__.py` executes and defines what symbols the package exposes to the outside world.
 
 ## python virtual environment
 A Python virtual environment provides an isolated and self-contained environment for a Python project, including its own Python interpreter and packages.
